@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+//职位列表
+import './job/job-list.dart' as Jobs;
 
 void main() => runApp(MyApp());
 
@@ -11,9 +13,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Center(
-        child: Text('hello'),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('心职')
+        ),
+        body: Container(
+          child: Jobs.JobListContainer()
+        )
       )
     );
   }
 }
+
+
