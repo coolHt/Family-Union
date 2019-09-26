@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 //职位列表
 import './job/job-list.dart' as Jobs;
-
-void main() => runApp(MyApp());
+//企业列表
+import './company/company-list.dart' as Companys;
+//职位详情
+import './job/job-detail.dart' as JobDetail;
+void main(){
+  debugPaintSizeEnabled = false;
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -15,10 +22,12 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('心职')
+          title: Text('假装是导航栏')
         ),
         body: Container(
-          child: Jobs.JobListContainer()
+          //child: Jobs.JobListContainer()
+          //child: Companys.CompanyListContainer()
+          child: JobDetail.JobDetail()
         )
       )
     );

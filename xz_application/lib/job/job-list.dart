@@ -25,9 +25,9 @@ class JobListContainer extends StatelessWidget{
 //单个职位
 Card jobList(Map data){
     return Card(
-      margin: EdgeInsets.fromLTRB(10.0, 0, 10.0, 15.0),
+      margin: EdgeInsets.all(15.0),
       child: Padding(
-        padding: EdgeInsets.all(12.0),
+        padding: EdgeInsets.all(14.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
