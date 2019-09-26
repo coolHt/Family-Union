@@ -88,14 +88,13 @@ Container jobDescription(){
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Common.maximumTitle('职位描述'),
-        Row(
-          children: <Widget>[
-            tagStyle('标签1'),
-            tagStyle('标签2'),
-            tagStyle('标签3'),
-            tagStyle('标签4'),
-            tagStyle('标签5'),
-          ],
+        Container(
+          margin: EdgeInsets.only(top: 15.0),
+          child:Wrap(
+            children: <Widget>[
+              tagStyle('标签1')
+            ],
+          ),
         ),
         Text(
           '工作内容',
@@ -123,13 +122,14 @@ Container jobDescription(){
 Container tagStyle(tag){
   return Container(
     padding: EdgeInsets.fromLTRB(8.0, 2.0, 8.0, 2.0),
+    margin: EdgeInsets.fromLTRB(0, 0, 10.0, 10.0),
     decoration: BoxDecoration(
       color: Color.fromARGB(255, 238, 238, 238)
     ),
     child: Text(
       tag,
       style: TextStyle(
-        color: Colors.grey
+        color: Colors.black54
       ),
     )
   );
