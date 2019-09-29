@@ -5,17 +5,24 @@ import '../common.dart' as Common;
 class JobDetail extends StatelessWidget{
   @override
   Widget build(BuildContext context){
-    return Container(
-      padding: EdgeInsets.all(18.0),
-      decoration: BoxDecoration(
-        color: Colors.white
+    //接收参数
+    final Map jName = ModalRoute.of(context).settings.arguments;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(jName['jobname'])
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          jobProfile(), //职位简介
-          jobDescription(), //职位描述
-        ],
+      body:Container(
+        padding: EdgeInsets.all(18.0),
+        decoration: BoxDecoration(
+          color: Colors.white
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            jobProfile(), //职位简介
+            jobDescription(), //职位描述
+          ],
+        )
       )
     );
   }

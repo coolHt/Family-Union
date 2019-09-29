@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 class CompanyListContainer extends StatelessWidget{
   @override
   Widget build(BuildContext context){
-    return ListView(
-      children: <Widget>[
-        companyList(),
-        companyList(),
-        companyList(),
-        companyList(),
-      ]
+    return Scaffold(
+      body:ListView(
+        children: <Widget>[
+          companyList(),
+          companyList(),
+          companyList(),
+          companyList(),
+        ]
+      )
     );
   }
 }
