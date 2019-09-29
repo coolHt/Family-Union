@@ -21,6 +21,7 @@ class JobDetail extends StatelessWidget{
           children: <Widget>[
             jobProfile(), //职位简介
             jobDescription(), //职位描述
+            companyProfile(), //企业简介
           ],
         )
       )
@@ -138,6 +139,95 @@ Container tagStyle(tag){
       style: TextStyle(
         color: Colors.black54
       ),
+    )
+  );
+}
+
+//企业简介
+Container companyProfile(){
+  return Container(
+    margin: EdgeInsets.fromLTRB(0, 18.0, 0, 18.0),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Common.maximumTitle('公司信息'),
+        Card(
+          margin: EdgeInsets.only(top: 15.0),
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 20.0),
+            child:Column(
+              children: <Widget>[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 4,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(bottom: 8.0),
+                            child: Text(
+                              '宁波某某有限公司',
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold
+                              )
+                            ),
+                          ),
+                          Text(
+                            '不需要融资/150-500人/移动互联网, 信息安全, 大数据分析/周末双休',
+                            softWrap: false,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 14.0,
+                            )
+                          )
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Image(
+                        width: 50.0,
+                        height: 50.0,
+                        image: AssetImage('images/cPic.jpg'),
+                        alignment: Alignment.topRight,
+                      )
+                    )
+                  ]
+                ),
+                Divider(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 4,
+                      child:ListTile(
+                        leading: Icon(
+                          Icons.near_me,
+                        ),
+                        title: Text('浙江-宁波-海曙'),
+                        subtitle: Text('雅戈尔大道738号'),
+                      )
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        child: Icon(
+                          Icons.keyboard_arrow_right,
+                          color: Colors.grey
+                        ),
+                        alignment: Alignment.centerRight,
+                      )
+                    )
+                  ],
+                )
+              ],
+            ),
+          )
+        )
+      ],
     )
   );
 }
