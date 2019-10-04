@@ -29,4 +29,14 @@ void _incrementGet() async{
   print(prefs.getInt('intKey'));
 }
 
+//3 获取本地IP
+// 需要用到io
+void getAddress() async{ //获取当前内网ip
+  for (var interface in await NetworkInterface.list()) {
+    for (var addr in interface.addresses) {
+      print('${addr.address}');
+    }
+  }
+}
+
 //研究代理, post中
