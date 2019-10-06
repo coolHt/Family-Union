@@ -1,16 +1,24 @@
 //坑啊坑啊都是坑, 只作记录
 
-//1、基础的get 请求
+//1.1、基础的get 请求
 // 需要用到 dio package
-void getHttp(){
+void getHttp() async{
   try{
-    Response respnse;
+    Response response;
     Dio dio = new Dio();
     response = await dio.get("http://127.0.0.1:8009/XXX", queryParameters: {"pagename": "alljoblist", "countnum": "10", "currpage": "1"});
     String resString = response.data.toString();
     print(resString);
   }catch(e){
     print(e);
+  }
+}
+//1.2 基础的post 请求
+void postHttp() async{
+  try{
+    Response response;
+    Map<String, dynamic> objData = xxx; //数据
+    Response response = await dio.post("http://122.xxx.xxx.xx:8241/xxx", data:objData);
   }
 }
 
@@ -39,4 +47,39 @@ void getAddress() async{ //获取当前内网ip
   }
 }
 
-//研究代理, post中
+//4.1 代理外部服务器
+//需要用到shelf_proxy 库
+//引用
+import 'package:shelf/shelf_io.dart' as shelf_io;
+import 'package:shelf_proxy/shelf_proxy.dart';
+
+void proxyExternalServer(){
+  var server = await shelf_io.serve(
+    proxyHandler("http://122.xx.xxx.xx:xxxx"), //这是是需要代理过去的地址
+    'localhost',  //设置本地代理过去的地址
+      8022,  //设置贝蒂代理地址的端口
+  );
+  //代理过去之后才会执行下面的代码
+  //do something...
+  //可以向服务器发送请求等操作
+  print('Proxying at http://${server.address.host}:${server.port}');
+}
+
+//4.2 代理本地服务
+//利用dio 库
+//引用
+import 'package:dio/dio.dart';
+import 'package:dio/adapter.dart';
+
+void proxyLocalServer(){
+  Dio dio = new Dio();
+  (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (HttpClient client) {
+      client.findProxy = (uri) {
+        //proxy all request to localhost:8888
+        return "PROXY localhost:各种端口";
+      };
+      client.badCertificateCallback =
+        (X509Certificate cert, String host, int port) => true;
+    };
+}
