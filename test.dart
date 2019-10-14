@@ -9,7 +9,7 @@ void getHttp() async{
     response = await dio.get("http://127.0.0.1:8009/XXX", queryParameters: {"pagename": "alljoblist", "countnum": "10", "currpage": "1"});
     String resString = response.data.toString();
     print(resString);
-  }catch(e){
+  }catch(e){ 
     print(e);
   }
 }
