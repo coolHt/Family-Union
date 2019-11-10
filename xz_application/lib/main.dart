@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-//网络调试
-import 'package:flutter_flipperkit/flutter_flipperkit.dart';
 //职位列表
 import './job/job-list.dart' as Jobs;
 //企业列表
@@ -8,11 +6,6 @@ import './company/company-list.dart' as Companys;
 //职位详情
 import './job/job-detail.dart' as JobDetail;
 void main(){
-  FlipperClient flipperClient = FlipperClient.getDefault();
-  
-  flipperClient.addPlugin(new FlipperReduxInspectorPlugin());
-  flipperClient.addPlugin(new FlipperSharedPreferencesPlugin());
-  flipperClient.start();
   runApp(MyApp());
 }
 
