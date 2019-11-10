@@ -1,13 +1,3 @@
-# 心职app
-### 创建职位列表
-##
-### 创建职位详情
-##
-### 创建企业列表
-##
-### 更新企业详情
-### test.dart => 记录碰到的坑
-### 2019.10.4
-#### 比较常规的,get 请求, post 请求, 跨域, 代理, 获取本地ip
-### 2019.10.6
-#### 解决了代理到外部服务器的坑
+# Family Union
+#
+### This repository is my new project for my family members, to record something about them and record family activity, like birthday, day of family party and so forth.
