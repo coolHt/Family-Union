@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'package:dio/dio.dart';
+
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
@@ -15,6 +18,27 @@ class JobListContainer extends StatelessWidget{
       json.decode(rawJson2),
       json.decode(rawJson3)
     ];
+    // HttpClient client = new HttpClient();
+    // client.getUrl(Uri.parse("http://127.0.0.1:5555/api/user")).then((HttpClientRequest request){
+    //   print(request);
+    //   return request.close();
+    // }).then((HttpClientResponse response){
+    //   var result = Utf8Decoder(response).join();
+    //   Future<String> j = jsonDecode(result);
+    // });
+    //HttpClient client = new HttpClient();
+    void getHttp() async{ //数据请求
+      try {
+        Response response = await Dio().get("http://127.0.0.1:5555/api/user");
+        print('success');
+        print(response);
+      }catch(e){
+        print(e);
+      }
+    }
+    getHttp();
+    
+  
 
     return Scaffold(
       appBar: AppBar(
