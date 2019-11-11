@@ -1,3 +1,4 @@
+//主色Colors.amberAccent fad75e
 import 'package:flutter/material.dart';
 //职位列表
 import './job/job-list.dart' as Jobs;
@@ -5,6 +6,8 @@ import './job/job-list.dart' as Jobs;
 import './company/company-list.dart' as Companys;
 //职位详情
 import './job/job-detail.dart' as JobDetail;
+//登录页面
+import './login.dart' as Login;
 void main(){
   runApp(MyApp());
 }
@@ -17,7 +20,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => Jobs.JobListContainer(),
+        '/': (context) => Login.LoginContainer(),
+        '/jobList': (context) => Jobs.JobListContainer(),
         '/jobDetail': (context) => JobDetail.JobDetail(),
         '/companyProfile': (context) => Companys.CompanyListContainer()
       },
