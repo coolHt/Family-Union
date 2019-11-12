@@ -1,4 +1,4 @@
-# xz_application
+# fu_application
 
 A new Flutter project.
 
