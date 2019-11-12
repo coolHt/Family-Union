@@ -26,15 +26,15 @@ import 'package:flutter/material.dart';
     double fontSize = 14.0,
     String hintText = "",
     Color hintTextColor,
-    double hintFontSize = 14.0,
+    double hintFontSize,
     Color textColor,
     Color borderColor,
     Color focusBorderColor, 
     double borderWidth = 1.0,
-    double foucsBorderWidth = 1.0, 
+    double foucsBorderWidth, 
     String inputType = "", //两种类型, 不填是普通文本, password是加密
     double inputRadius = 5.0,
-    double focusInputRadius = 5.0,
+    double focusInputRadius,
     Map contentPadding
   }){
     if(contentPadding == null){
@@ -49,6 +49,9 @@ import 'package:flutter/material.dart';
     if(textColor == null) textColor = Color.fromRGBO(51, 51, 51, 1.0);
     if(borderColor == null) borderColor = Color.fromRGBO(51, 51, 51, 1.0);
     if(focusBorderColor == null) focusBorderColor = Color.fromRGBO(51, 51, 51, 1.0);
+    if(foucsBorderWidth == null) foucsBorderWidth = borderWidth; //默认情况下, 获得焦点的宽度跟普通状态是一样的
+    if(hintFontSize == null) hintFontSize = fontSize; //默认情况下, 提示的文字大小跟输入框文字大小一样
+    if(focusInputRadius == null) focusInputRadius = inputRadius; //默认情况下, 获得焦点的圆角跟普通状态的圆角相同
 
     return TextFormField(
       //是否加密
