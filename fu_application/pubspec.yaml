@@ -47,6 +47,8 @@ flutter:
     - images/cPic.jpg
     - images/loginBg.jpg
     - images/insLogo.png
+    - images/night.jpg
+    - images/station.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
