@@ -14,6 +14,7 @@ String inputType: 输入框类型
 double inputRadius: 输入框圆角
 double focusInputRadius: 获得焦点时输入框圆角
 Map contentPadding: 内部padding,需要四个都指定了left:'',right:'',top:'',bottom:''
+var controllerFun 方法
 暂时就先这样
 键盘类型
 文字位置(左中右)
@@ -35,7 +36,8 @@ import 'package:flutter/material.dart';
     String inputType = "", //两种类型, 不填是普通文本, password是加密
     double inputRadius = 5.0,
     double focusInputRadius,
-    Map contentPadding
+    Map contentPadding,
+    var controllerFun //操作的方法
   }){
     if(contentPadding == null){
       contentPadding = {
@@ -89,7 +91,10 @@ import 'package:flutter/material.dart';
             color: focusBorderColor
           )
         ),
-      )
+      ),
+      //传入的控制方法
+      controller: controllerFun,
+      //focusNode: ,
     );
 }
 //}

@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import './components/fu-input.dart' as FormInput;
 
-class LoginContainer extends StatelessWidget {
+class LoginContainer extends StatefulWidget{ //动态widget还是要看一下滴。
+  LoginContainer({Key key}) : super(key: key);
+
+  @override
+  LoginState createState() => LoginState();
+}
+class LoginState extends State<LoginContainer> {
+  double borderWidth = 2.0; //边框宽度
+  bool accountFocus = false; //账号是否被focus
+
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
@@ -16,14 +25,14 @@ class LoginContainer extends StatelessWidget {
       "right": 10.0,
       "bottom": 15.0,
     };
-    double borderWidth = 2.0; //边框宽度
-    final _fromKey = GlobalKey < FormState > ();
+    
+
+    final _fromKey = GlobalKey <FormState> ();
 
     login(){
       print("我要登录了!!!");
     }
-    //输入框
-    typeInput(String hintText, {String type}){
+    typeInput(String hintText, {String type, var controllerFun, var focusBorderColor}){
       return FormInput.fuInput(
         borderColor: borderColor,
         hintTextColor: hintTextColor,
@@ -32,10 +41,29 @@ class LoginContainer extends StatelessWidget {
         contentPadding: contentPadding,
         fontSize: 16.0,
         inputType: type, 
-        hintText: hintText, 
+        hintText: hintText,
+        controllerFun: controllerFun,
+        focusBorderColor: focusBorderColor
       );
     }
-    
+
+    //响应输入框操作
+    final _controller = TextEditingController();
+    // _controller.addListener((){
+    //   print(_controller.text);
+    // });
+    //判断是否被选中
+    textFocus(){
+      print("aaa");
+      setState((){
+        //切换
+        accountFocus = !accountFocus;
+      });
+    }
+    textFs(){
+      print("111");
+    }
+
     //文字样式
     TextStyle txtstyle({double fontSize: 16.0, String fontWeight: "bold", fontColor}){
       if(fontColor == null) fontColor =  Color.fromRGBO(80, 150, 233, 1.0);
@@ -69,13 +97,34 @@ class LoginContainer extends StatelessWidget {
                 //key: _fromKey,
                 child: Column(
                   children: <Widget> [
+                    //账号
                     Container(
                       margin:EdgeInsets.only(bottom: 15.0),
-                      child: typeInput("手机号或邮箱")
+                      child: Material(
+                        elevation: 100.0,
+                        shape: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: accountFocus ? Colors.amber : Color.fromRGBO(255, 255, 255, 0)
+                          )
+                        ),
+                        color: Color.fromRGBO(255, 255, 255, 0),
+                        child: Focus(
+                          onFocusChange: textFocus(),
+                          child: typeInput("手机号或邮箱", focusBorderColor: Color.fromRGBO(255, 255, 255, 0)),
+                        )
+                      ),
                     ),
+                    //密码
                     Container(
                       margin:EdgeInsets.only(bottom: 15.0),
-                      child: typeInput("密码", type:"password")
+                      child: Material(
+                        shadowColor: Colors.blue,
+                        color: Color.fromRGBO(255, 255, 255, 0),
+                        child: Focus(
+                          onFocusChange: textFs(),
+                          child: typeInput("密码", type:"password", focusBorderColor: Color.fromRGBO(255, 255, 255, 0)),
+                        )
+                      )
                     ),
                     //忘记密码
                     Container(
