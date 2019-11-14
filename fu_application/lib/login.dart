@@ -35,9 +35,19 @@ class LoginContainer extends StatelessWidget {
         hintText: hintText, 
       );
     }
+    
+    //文字样式
+    TextStyle txtstyle({double fontSize: 16.0, String fontWeight: "bold", fontColor}){
+      if(fontColor == null) fontColor =  Color.fromRGBO(80, 150, 233, 1.0);
+      return TextStyle(
+        fontWeight: fontWeight == "bold" ? FontWeight.bold : FontWeight.normal, //只有粗体和普通字体
+        fontSize: fontSize,
+        color: fontColor
+      );
+    }
 
     return Scaffold(
-      //resizeToAvoidBottomInset: false, //禁止键盘顶起页面
+      resizeToAvoidBottomInset: false, //禁止键盘顶起页面
       body: Container(
         width: deviceWidth,
         height: deviceHeight,
@@ -73,11 +83,7 @@ class LoginContainer extends StatelessWidget {
                       margin: EdgeInsets.only(bottom: 15.0),
                       child: Text(
                         "忘记密码了?",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromRGBO(80, 150, 233, 1.0),
-                          fontSize: 14.0
-                        ),
+                        style: txtstyle(fontSize: 14.0),
                         textAlign: TextAlign.right,
                       ),
                     ),
@@ -90,10 +96,7 @@ class LoginContainer extends StatelessWidget {
                         child: Text(
                           "登录",
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1.0),
-                            fontSize: 16.0
-                          )
+                          style: txtstyle(fontColor: Color.fromRGBO(255, 255, 255, 1.0), fontWeight: "normal"),
                         ),
                       ),
                       onPressed: login
@@ -105,11 +108,7 @@ class LoginContainer extends StatelessWidget {
                       child: Text(
                         "手机验证码登录",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16.0,
-                          color: Color.fromRGBO(80, 150, 233, 1.0)
-                        )
+                        style: txtstyle()
                       )
                     ),
                     //注册
@@ -120,19 +119,11 @@ class LoginContainer extends StatelessWidget {
                           children: <TextSpan>[
                             TextSpan(
                               text: "还没有账户?",
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromRGBO(255, 255, 255, 1)
-                              )
+                              style: txtstyle(fontColor: Color.fromRGBO(255, 255, 255, 1.0))
                             ),
                             TextSpan(
                               text: "注册",
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromRGBO(80, 150, 233, 1.0)
-                              )
+                              style: txtstyle()
                             )
                           ]
                         )
