@@ -55,6 +55,11 @@ import 'package:flutter/material.dart';
     if(hintFontSize == null) hintFontSize = fontSize; //默认情况下, 提示的文字大小跟输入框文字大小一样
     if(focusInputRadius == null) focusInputRadius = inputRadius; //默认情况下, 获得焦点的圆角跟普通状态的圆角相同
 
+    //
+    testClick(){
+      print("click");
+    }
+
     return TextFormField(
       //是否加密
       obscureText: inputType == 'password' ? true : false,
@@ -94,6 +99,8 @@ import 'package:flutter/material.dart';
       ),
       //传入的控制方法
       controller: controllerFun,
+      //onTap
+      onTap: testClick()
       //focusNode: ,
     );
 }

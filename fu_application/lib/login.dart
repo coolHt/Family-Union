@@ -9,7 +9,6 @@ class LoginContainer extends StatefulWidget{ //动态widget还是要看一下滴
 }
 class LoginState extends State<LoginContainer> {
   double borderWidth = 2.0; //边框宽度
-  bool accountFocus = false; //账号是否被focus
 
   @override
   Widget build(BuildContext context) {
@@ -52,14 +51,6 @@ class LoginState extends State<LoginContainer> {
     // _controller.addListener((){
     //   print(_controller.text);
     // });
-    //判断是否被选中
-    textFocus(){
-      print("aaa");
-      setState((){
-        //切换
-        accountFocus = !accountFocus;
-      });
-    }
     textFs(){
       print("111");
     }
@@ -104,14 +95,11 @@ class LoginState extends State<LoginContainer> {
                         elevation: 100.0,
                         shape: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: accountFocus ? Colors.amber : Color.fromRGBO(255, 255, 255, 0)
+                            color: Color.fromRGBO(255, 255, 255, 0)
                           )
                         ),
                         color: Color.fromRGBO(255, 255, 255, 0),
-                        child: Focus(
-                          onFocusChange: textFocus(),
-                          child: typeInput("手机号或邮箱", focusBorderColor: Color.fromRGBO(255, 255, 255, 0)),
-                        )
+                        child: typeInput("手机号或邮箱", focusBorderColor: Color.fromRGBO(255, 255, 255, 0))
                       ),
                     ),
                     //密码
@@ -120,10 +108,7 @@ class LoginState extends State<LoginContainer> {
                       child: Material(
                         shadowColor: Colors.blue,
                         color: Color.fromRGBO(255, 255, 255, 0),
-                        child: Focus(
-                          onFocusChange: textFs(),
-                          child: typeInput("密码", type:"password", focusBorderColor: Color.fromRGBO(255, 255, 255, 0)),
-                        )
+                        child: typeInput("密码", type:"password", focusBorderColor: Color.fromRGBO(255, 255, 255, 0))
                       )
                     ),
                     //忘记密码
