@@ -9,6 +9,26 @@ class LoginContainer extends StatefulWidget{ //动态widget还是要看一下滴
 }
 class LoginState extends State<LoginContainer> {
   double borderWidth = 2.0; //边框宽度
+  FocusNode accountNode = FocusNode();
+  FocusNode pwdNode = FocusNode();
+  @override
+  void initState() {  //Called when this object is inserted into the tree
+    accountNode.addListener(() { //监听账号focus状态
+      if(accountNode.hasFocus){
+        print("账号被focus啦");
+      }else{
+        print("账号lost focus啦");
+      }
+    });
+    pwdNode.addListener((){  //监听密码focus状态
+      if(accountNode.hasFocus){
+        print("密码被focus啦");
+      }else{
+        print("密码lost focus啦");
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +46,13 @@ class LoginState extends State<LoginContainer> {
     };
     
 
-    final _fromKey = GlobalKey <FormState> ();
+    //final _fromKey = GlobalKey <FormState> ();
 
     login(){
       print("我要登录了!!!");
     }
-    typeInput(String hintText, {String type, var controllerFun, var focusBorderColor}){
+    //标准化当前页面使用的Input
+    typeInput(String hintText, {String type, var controllerFun, var focusBorderColor, var focusnode}){
       return FormInput.fuInput(
         borderColor: borderColor,
         hintTextColor: hintTextColor,
@@ -42,18 +63,19 @@ class LoginState extends State<LoginContainer> {
         inputType: type, 
         hintText: hintText,
         controllerFun: controllerFun,
-        focusBorderColor: focusBorderColor
+        focusBorderColor: focusBorderColor,
+        focusnode: focusnode
       );
     }
 
     //响应输入框操作
-    final _controller = TextEditingController();
+    //final _controller = TextEditingController();
     // _controller.addListener((){
     //   print(_controller.text);
     // });
-    textFs(){
-      print("111");
-    }
+    // textFs(){
+    //   print("111");
+    // }
 
     //文字样式
     TextStyle txtstyle({double fontSize: 16.0, String fontWeight: "bold", fontColor}){
@@ -99,7 +121,7 @@ class LoginState extends State<LoginContainer> {
                           )
                         ),
                         color: Color.fromRGBO(255, 255, 255, 0),
-                        child: typeInput("手机号或邮箱", focusBorderColor: Color.fromRGBO(255, 255, 255, 0))
+                        child: typeInput("手机号或邮箱", focusBorderColor: Color.fromRGBO(255, 255, 255, 0), focusnode: fNode)
                       ),
                     ),
                     //密码

@@ -15,6 +15,7 @@ double inputRadius: 输入框圆角
 double focusInputRadius: 获得焦点时输入框圆角
 Map contentPadding: 内部padding,需要四个都指定了left:'',right:'',top:'',bottom:''
 var controllerFun 方法
+focusnode //测试
 暂时就先这样
 键盘类型
 文字位置(左中右)
@@ -37,7 +38,8 @@ import 'package:flutter/material.dart';
     double inputRadius = 5.0,
     double focusInputRadius,
     Map contentPadding,
-    var controllerFun //操作的方法
+    var controllerFun, //操作的方法
+    var focusnode
   }){
     if(contentPadding == null){
       contentPadding = {
@@ -55,12 +57,8 @@ import 'package:flutter/material.dart';
     if(hintFontSize == null) hintFontSize = fontSize; //默认情况下, 提示的文字大小跟输入框文字大小一样
     if(focusInputRadius == null) focusInputRadius = inputRadius; //默认情况下, 获得焦点的圆角跟普通状态的圆角相同
 
-    //
-    testClick(){
-      print("click");
-    }
-
     return TextFormField(
+      focusNode: focusnode,
       //是否加密
       obscureText: inputType == 'password' ? true : false,
       //文字效果
@@ -100,7 +98,6 @@ import 'package:flutter/material.dart';
       //传入的控制方法
       controller: controllerFun,
       //onTap
-      onTap: testClick()
       //focusNode: ,
     );
 }
