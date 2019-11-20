@@ -121,7 +121,7 @@ class LoginState extends State<LoginContainer> {
                           )
                         ),
                         color: Color.fromRGBO(255, 255, 255, 0),
-                        child: typeInput("手机号或邮箱", focusBorderColor: Color.fromRGBO(255, 255, 255, 0), focusnode: fNode)
+                        child: typeInput("手机号或邮箱", focusBorderColor: Color.fromRGBO(255, 255, 255, 0), focusnode: accountNode)
                       ),
                     ),
                     //密码
@@ -130,7 +130,7 @@ class LoginState extends State<LoginContainer> {
                       child: Material(
                         shadowColor: Colors.blue,
                         color: Color.fromRGBO(255, 255, 255, 0),
-                        child: typeInput("密码", type:"password", focusBorderColor: Color.fromRGBO(255, 255, 255, 0))
+                        child: typeInput("密码", type:"password", focusBorderColor: Color.fromRGBO(255, 255, 255, 0), focusnode: pwdNode)
                       )
                     ),
                     //忘记密码
