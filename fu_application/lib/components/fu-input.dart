@@ -39,7 +39,7 @@ import 'package:flutter/material.dart';
     double focusInputRadius,
     Map contentPadding,
     var controllerFun, //操作的方法
-    var focusnode
+    var focusnode //焦点控制的方法
   }){
     if(contentPadding == null){
       contentPadding = {
@@ -68,6 +68,7 @@ import 'package:flutter/material.dart';
       ),
       //
       decoration: InputDecoration(
+        //背景颜色
         //padding
         contentPadding: EdgeInsets.fromLTRB(contentPadding['left'], contentPadding['top'], contentPadding['right'], contentPadding['bottom']),
         //提示文字和样式

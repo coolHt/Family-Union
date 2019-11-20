@@ -8,6 +8,8 @@ import './company/company-list.dart' as Companys;
 import './job/job-detail.dart' as JobDetail;
 //登录页面
 import './login.dart' as Login;
+//验证码登录页面
+import './message-code.dart' as MessageCode;
 void main(){
   runApp(MyApp());
 }
@@ -20,10 +22,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => Login.LoginContainer(),
+        '/': (context) => MessageCode.MessageCode(),
         '/jobList': (context) => Jobs.JobListContainer(),
         '/jobDetail': (context) => JobDetail.JobDetail(),
-        '/companyProfile': (context) => Companys.CompanyListContainer()
+        '/companyProfile': (context) => Companys.CompanyListContainer(),
+        '/login': (context) => Login.LoginContainer(),
+        //'/messagecode': (context) => MessageCode.MessageCode()
       },
       title: '心职',
       theme: ThemeData(

@@ -68,15 +68,6 @@ class LoginState extends State<LoginContainer> {
       );
     }
 
-    //响应输入框操作
-    //final _controller = TextEditingController();
-    // _controller.addListener((){
-    //   print(_controller.text);
-    // });
-    // textFs(){
-    //   print("111");
-    // }
-
     //文字样式
     TextStyle txtstyle({double fontSize: 16.0, String fontWeight: "bold", fontColor}){
       if(fontColor == null) fontColor =  Color.fromRGBO(80, 150, 233, 1.0);
@@ -113,25 +104,12 @@ class LoginState extends State<LoginContainer> {
                     //账号
                     Container(
                       margin:EdgeInsets.only(bottom: 15.0),
-                      child: Material(
-                        elevation: 100.0,
-                        shape: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color.fromRGBO(255, 255, 255, 0)
-                          )
-                        ),
-                        color: Color.fromRGBO(255, 255, 255, 0),
-                        child: typeInput("手机号或邮箱", focusBorderColor: Color.fromRGBO(255, 255, 255, 0), focusnode: accountNode)
-                      ),
+                      child: typeInput("手机号或邮箱", focusBorderColor: Color.fromRGBO(255, 255, 255, 1), focusnode: accountNode)
                     ),
                     //密码
                     Container(
                       margin:EdgeInsets.only(bottom: 15.0),
-                      child: Material(
-                        shadowColor: Colors.blue,
-                        color: Color.fromRGBO(255, 255, 255, 0),
-                        child: typeInput("密码", type:"password", focusBorderColor: Color.fromRGBO(255, 255, 255, 0), focusnode: pwdNode)
-                      )
+                      child: typeInput("密码", type:"password", focusBorderColor: Color.fromRGBO(255, 255, 255, 0), focusnode: pwdNode)
                     ),
                     //忘记密码
                     Container(
