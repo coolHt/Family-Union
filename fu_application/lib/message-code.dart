@@ -24,6 +24,7 @@ import './components/fu-input.dart' as FormInput;
       "right": 0.0,
       "bottom": 15.0,
     };
+    
      return Scaffold(
        body: GestureDetector(
          onTap: (){

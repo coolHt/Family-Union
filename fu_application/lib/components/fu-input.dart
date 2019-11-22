@@ -82,9 +82,19 @@ import 'package:flutter/material.dart';
       ),
       //
       decoration: InputDecoration(
+        icon: Image(
+          width: 30.0,
+          fit: BoxFit.fitWidth,
+          image: AssetImage("images/phone.png"),
+        ),
         //背景颜色
         //padding
-        contentPadding: EdgeInsets.fromLTRB(contentPadding['left'], contentPadding['top'], contentPadding['right'], contentPadding['bottom']),
+        contentPadding: EdgeInsets.fromLTRB(
+          contentPadding['left'], 
+          contentPadding['top'], 
+          contentPadding['right'], 
+          contentPadding['bottom']
+        ),
         //提示文字和样式
         hintText: hintText,
         hintStyle: TextStyle(

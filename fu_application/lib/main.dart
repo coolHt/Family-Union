@@ -1,5 +1,6 @@
 //主色Colors.amberAccent fad75e
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 //职位列表
 import './job/job-list.dart' as Jobs;
 //企业列表
@@ -10,7 +11,9 @@ import './job/job-detail.dart' as JobDetail;
 import './login.dart' as Login;
 //验证码登录页面
 import './message-code.dart' as MessageCode;
+
 void main(){
+  //debugPaintSizeEnabled = true;
   runApp(MyApp());
 }
 
