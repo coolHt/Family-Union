@@ -9,8 +9,27 @@ import './commonMethod.dart' as Methods;
  }
 
  class MessageCodeState extends State<MessageCode>{
+
+   //监听输入
+   final _controller = TextEditingController();
+   //判断手机号码格式
+   bool verityPhone = false;
    @override
    void initState(){
+     _controller.addListener((){
+       if(_controller.text != ""){
+          bool res = Methods.identifyPhoneType(_controller.text);
+          if(res){
+            this.setState((){
+              verityPhone = true;
+            });
+          }else{
+            this.setState((){
+              verityPhone = false;
+            });
+          }
+       }
+     });
     super.initState();
    }
   
@@ -19,8 +38,7 @@ import './commonMethod.dart' as Methods;
      double deviceWidth = MediaQuery.of(context).size.width;
      double deviceHeight = MediaQuery.of(context).size.height;
      double wExtent = deviceWidth * 0.8;
-     //判断手机号码格式
-     bool verityPhone = false;
+     
      Map contentPadding = { 
       "left": 0.0,
       "top": 15.0,
@@ -35,8 +53,7 @@ import './commonMethod.dart' as Methods;
     );
     //发送验证码
     postCode(){
-      bool res = Methods.identifyPhoneType("15825568423");
-      print(res);
+      
     }
      return Scaffold(
        body: GestureDetector(
@@ -72,6 +89,7 @@ import './commonMethod.dart' as Methods;
                       Expanded(
                         flex:3,
                         child: FormInput.fuInput(
+                          controllerFun: _controller,
                           hintText: "请输入手机号",
                           borderColor: Color.fromRGBO(255, 255, 255, 0), 
                           focusBorderColor: Color.fromRGBO(255, 255, 255, 0),
@@ -86,7 +104,7 @@ import './commonMethod.dart' as Methods;
                       Expanded(
                         child:OutlineButton(
                           //验证码发送状态
-                          onPressed: postCode,
+                          onPressed: verityPhone ? postCode : null,
                           disabledBorderColor: Colors.transparent,
                           padding: EdgeInsets.all(0),
                           borderSide: BorderSide(
