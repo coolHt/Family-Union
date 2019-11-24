@@ -17,6 +17,7 @@ Map contentPadding: 内部padding,需要四个都指定了left:'',right:'',top:'
 var controllerFun 方法
 focusnode //焦点事件
 keyboardType //键盘类型
+icon //icon样式
 暂时就先这样
 文字位置(左中右)
 */
@@ -38,9 +39,10 @@ import 'package:flutter/material.dart';
     double inputRadius = 5.0,
     double focusInputRadius,
     Map contentPadding,
-    var controllerFun, //操作的方法
-    var focusnode, //焦点控制的方法
+    dynamic controllerFun, //操作的方法
+    dynamic focusnode, //焦点控制的方法
     String keyboardType, //键盘类型  number,phone, 默认text
+    dynamic iconAssets //设置icon
   }){
     if(contentPadding == null){
       contentPadding = {
@@ -82,11 +84,12 @@ import 'package:flutter/material.dart';
       ),
       //
       decoration: InputDecoration(
-        icon: Image(
-          width: 30.0,
-          fit: BoxFit.fitWidth,
-          image: AssetImage("images/phone.png"),
-        ),
+        // icon: Image(
+        //   width: 30.0,
+        //   fit: BoxFit.fitWidth,
+        //   image: AssetImage("images/phone.png"),
+        // ),
+        icon: iconAssets,
         //背景颜色
         //padding
         contentPadding: EdgeInsets.fromLTRB(
