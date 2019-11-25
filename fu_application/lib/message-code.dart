@@ -13,7 +13,7 @@ class MessageCode extends StatefulWidget {
   MessageCodeState createState() => MessageCodeState();
 }
 
-class MessageCodeState extends State < MessageCode > {
+class MessageCodeState extends State <MessageCode> {
   //监听输入
   final _controller = TextEditingController();
   //判断手机号码格式
@@ -27,7 +27,7 @@ class MessageCodeState extends State < MessageCode > {
     _controller.addListener(() {
       if (_controller.text != "") {
         bool res = Methods.identifyPhoneType(_controller.text);
-        if (res) {
+        if (res && showNum == false) {
           //验证通过
           this.setState(() {
             verityPhone = true;
@@ -45,8 +45,7 @@ class MessageCodeState extends State < MessageCode > {
 
   //倒计时
   void countDown() {
-    const timeout =
-      const Duration(seconds: 1);
+    const timeout = const Duration(seconds: 1);
     new Timer.periodic(
       timeout,
       (Timer t) {
@@ -54,8 +53,16 @@ class MessageCodeState extends State < MessageCode > {
         this.setState(() {
           countNum = countNum;
         });
-        if (countNum == 1) {
+        if (countNum == 0) {
           t.cancel();
+          //需要校验一下号码是否匹对
+          bool reConfirm = Methods.identifyPhoneType(_controller.text);
+          //初始化
+          this.setState((){
+            showNum = false;
+            verityPhone = reConfirm;
+            countNum = 60;
+          });
         }
       }
     );
@@ -63,6 +70,10 @@ class MessageCodeState extends State < MessageCode > {
 
   //发送验证码
   postCode() {
+    this.setState((){
+      showNum = true;
+      verityPhone = false;
+    });
     countDown();
   }
 
@@ -86,9 +97,8 @@ class MessageCodeState extends State < MessageCode > {
     );
 
     //倒计时widget
-    countNumber(){
-      if(showNum){
-        return Container(
+    Container countNumber(){
+      return Container(
           width: wExtent,
           child: Text(
             "$countNum秒后可重新获取",
@@ -99,8 +109,6 @@ class MessageCodeState extends State < MessageCode > {
             )
           ),
         );
-      }
-      
     }
 
     return Scaffold(
@@ -170,8 +178,9 @@ class MessageCodeState extends State < MessageCode > {
                   ],
                 )
               ),
-              //倒计时
-              countNumber()
+              Container(
+                child: showNum ? countNumber() : null,
+              )
             ],
           )
         ),
