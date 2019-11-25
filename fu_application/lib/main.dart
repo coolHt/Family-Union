@@ -1,6 +1,8 @@
 //主色Colors.amberAccent fad75e
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+//首页
+import './home.dart' as Home;
 //职位列表
 import './job/job-list.dart' as Jobs;
 //企业列表
@@ -25,12 +27,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => MessageCode.MessageCode(),
+        '/': (context) => Home.MainHome(),
         '/jobList': (context) => Jobs.JobListContainer(),
         '/jobDetail': (context) => JobDetail.JobDetail(),
         '/companyProfile': (context) => Companys.CompanyListContainer(),
         '/login': (context) => Login.LoginContainer(),
-        //'/messagecode': (context) => MessageCode.MessageCode()
+        '/messagecode': (context) => MessageCode.MessageCode()
       },
       title: '心职',
       theme: ThemeData(
