@@ -110,6 +110,28 @@ class MessageCodeState extends State <MessageCode> {
           ),
         );
     }
+    //验证码小方块
+    Container codePartition(double w){
+      return Container(
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: Colors.white,
+              width: 2.0
+            )
+          )
+        ),
+        width: w,
+        child: FormInput.fuInput(
+          borderColor: Colors.transparent,
+          focusBorderColor: Colors.transparent,
+          keyboardType: "number",
+          fontSize: 16.0,
+          textColor: Colors.white,
+          showCursor: false
+        )
+      );
+    }
 
     return Scaffold(
       body: GestureDetector(
@@ -180,7 +202,9 @@ class MessageCodeState extends State <MessageCode> {
               ),
               Container(
                 child: showNum ? countNumber() : null,
-              )
+              ),
+              //验证码
+              codePartition(wExtent)
             ],
           )
         ),

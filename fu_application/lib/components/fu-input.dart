@@ -16,7 +16,8 @@ double focusInputRadius: 获得焦点时输入框圆角
 Map contentPadding: 内部padding,需要四个都指定了left:'',right:'',top:'',bottom:''
 var controllerFun 方法
 focusnode //焦点事件
-keyboardType //键盘类型
+string keyboardType //键盘类型
+bool showCursor //是否显示指示线
 icon //icon样式
 暂时就先这样
 文字位置(左中右)
@@ -42,7 +43,8 @@ import 'package:flutter/material.dart';
     dynamic controllerFun, //操作的方法
     dynamic focusnode, //焦点控制的方法
     String keyboardType, //键盘类型  number,phone, 默认text
-    dynamic iconAssets //设置icon
+    dynamic iconAssets, //设置icon
+    bool showCursor = true //是否显示指示线
   }){
     if(contentPadding == null){
       contentPadding = {
@@ -71,6 +73,9 @@ import 'package:flutter/material.dart';
       }
     }
     return TextFormField(
+      //是否显示指示线?
+      showCursor: showCursor,
+      // textAlign: TextAlign(),
       //焦点事件
       focusNode: focusnode,
       //键盘类型
