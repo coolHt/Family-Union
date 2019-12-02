@@ -5,6 +5,8 @@ as FormInput;
 import './commonMethod.dart'
 as Methods;
 
+import './components/fill-message.dart' as FillMessage;
+
 class MessageCode extends StatefulWidget {
   MessageCode({
     Key key
@@ -232,6 +234,7 @@ class MessageCodeState extends State <MessageCode> {
                           hintTextColor: Colors.white
                         ),
                       ),
+                      FillMessage.FillMessage(inputWidth: 10.0)
                   ],
                 ),
               )
