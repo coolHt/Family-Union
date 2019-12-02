@@ -169,7 +169,7 @@ class MessageCodeState extends State <MessageCode> {
                       child: FormInput.fuInput(
                         controllerFun: _controller,
                         hintText: "请输入手机号",
-                        borderColor: Color.fromRGBO(255, 255, 255, 0),
+                        borderColor: Colors.transparent,
                         focusBorderColor: Color.fromRGBO(255, 255, 255, 0),
                         fontSize: 16.0,
                         textColor: Colors.white,
@@ -204,7 +204,37 @@ class MessageCodeState extends State <MessageCode> {
                 child: showNum ? countNumber() : null,
               ),
               //验证码
-              codePartition(wExtent)
+              Container(
+                margin: EdgeInsets.only(top: 30.0),
+                width: wExtent,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        width: wExtent * 0.13,
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              width: 2.0,
+                              color: Colors.white
+                            )
+                          )
+                        ),
+                        child: FormInput.fuInput(
+                          keyboardType: "number",
+                          textLength: 1,
+                          focusBorderColor: Colors.transparent,
+                          fontSize: 20.0,
+                          textColor: Colors.white,
+                          textPos: "center",
+                          showCursor: false,
+                          borderColor: Colors.transparent,
+                          hintTextColor: Colors.white
+                        ),
+                      ),
+                  ],
+                ),
+              )
             ],
           )
         ),

@@ -19,11 +19,14 @@ focusnode //焦点事件
 string keyboardType //键盘类型
 bool showCursor //是否显示指示线
 icon //icon样式
+textPos //文字位置
+textLength //文字长度
 暂时就先这样
 文字位置(左中右)
 */
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 //自定义输入框
 //class FormInput {
   TextFormField fuInput({
@@ -44,7 +47,9 @@ import 'package:flutter/material.dart';
     dynamic focusnode, //焦点控制的方法
     String keyboardType, //键盘类型  number,phone, 默认text
     dynamic iconAssets, //设置icon
-    bool showCursor = true //是否显示指示线
+    bool showCursor = true, //是否显示指示线
+    String textPos = "left", //文字位置
+    int textLength = 0, //文字长度
   }){
     if(contentPadding == null){
       contentPadding = {
@@ -72,7 +77,24 @@ import 'package:flutter/material.dart';
           return null;
       }
     }
+    //文字位置
+    textAlignPosition(){
+      switch(textPos){
+        case "left":
+          return TextAlign.left;
+        case "center":
+          return TextAlign.center;  
+        case "right":
+          return TextAlign.right; 
+        default:
+          return TextAlign.left; 
+      }
+    }
     return TextFormField(
+      //最大字符
+      maxLength: textLength > 0 ? textLength : null,
+      //文字位置
+      textAlign: textAlignPosition(),
       //是否显示指示线?
       showCursor: showCursor,
       // textAlign: TextAlign(),
@@ -89,6 +111,7 @@ import 'package:flutter/material.dart';
       ),
       //
       decoration: InputDecoration(
+        counterText: "", //设置不显示底部文字计数
         // icon: Image(
         //   width: 30.0,
         //   fit: BoxFit.fitWidth,
