@@ -5,7 +5,7 @@ as FormInput;
 import './commonMethod.dart'
 as Methods;
 
-import './components/fill-message.dart' as FillMessage;
+import './components/code-block.dart' as CodeBlock;
 
 class MessageCode extends StatefulWidget {
   MessageCode({
@@ -113,26 +113,13 @@ class MessageCodeState extends State <MessageCode> {
         );
     }
     //验证码小方块
-    Container codePartition(double w){
-      return Container(
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: Colors.white,
-              width: 2.0
-            )
-          )
-        ),
-        width: w,
-        child: FormInput.fuInput(
-          borderColor: Colors.transparent,
-          focusBorderColor: Colors.transparent,
-          keyboardType: "number",
-          fontSize: 16.0,
-          textColor: Colors.white,
-          showCursor: false
-        )
-      );
+    codePartition(){
+      var verifyBlock = List<Widget>();
+      for(int i = 0; i < 6; i++){
+        Widget single = CodeBlock.FillMessage();
+        verifyBlock.add(single);
+      }
+      return verifyBlock;
     }
 
     return Scaffold(
@@ -211,31 +198,7 @@ class MessageCodeState extends State <MessageCode> {
                 width: wExtent,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        width: wExtent * 0.13,
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              width: 2.0,
-                              color: Colors.white
-                            )
-                          )
-                        ),
-                        child: FormInput.fuInput(
-                          keyboardType: "number",
-                          textLength: 1,
-                          focusBorderColor: Colors.transparent,
-                          fontSize: 20.0,
-                          textColor: Colors.white,
-                          textPos: "center",
-                          showCursor: false,
-                          borderColor: Colors.transparent,
-                          hintTextColor: Colors.white
-                        ),
-                      ),
-                      FillMessage.FillMessage(inputWidth: 10.0)
-                  ],
+                    children: codePartition(), //验证码
                 ),
               )
             ],
