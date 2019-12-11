@@ -1,6 +1,5 @@
 //主色Colors.amberAccent fad75e
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 //首页
 import './home.dart' as Home;
 //职位列表

@@ -43,6 +43,7 @@ class MessageCodeState extends State <MessageCode> {
         }
       }
     });
+    super.initState();
   }
 
   //倒计时
