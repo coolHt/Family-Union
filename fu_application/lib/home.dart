@@ -10,10 +10,15 @@ class MainHome extends StatefulWidget{
 }
 
 class MainHomeState extends State<MainHome>{
+  List bgUrls = <String>["images/beach.jpg","images/beauty.jpg","images/farry.jpg","images/house.jpg","images/mountains.jpg","images/rainfost.jpg","images/scenery.jpg"];
   @override 
   Widget build(BuildContext context){
-    return Container(
-      child: Text("This is home page")
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          color: Colors.red
+        ),
+      )
     );
   }
 }

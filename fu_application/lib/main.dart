@@ -27,12 +27,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => MessageCode.MessageCode(),
+        '/': (context) => Home.MainHome(),
         '/jobList': (context) => Jobs.JobListContainer(),
         '/jobDetail': (context) => JobDetail.JobDetail(),
         '/companyProfile': (context) => Companys.CompanyListContainer(),
         '/login': (context) => Login.LoginContainer(),
-        //'/messagecode': (context) => MessageCode.MessageCode()
+        '/messagecode': (context) => MessageCode.MessageCode()
       },
       title: '心职',
       theme: ThemeData(

@@ -51,6 +51,12 @@ flutter:
     - images/station.jpg
     - images/dusk.jpg
     - images/phone.png
+    - images/beach.jpg
+    - images/beauty.jpg
+    - images/house.jpg
+    - images/mountains.jpg
+    - images/rainfost.jpg
+    - images/scenery.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
