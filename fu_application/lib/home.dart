@@ -34,6 +34,11 @@ class MainHomeState extends State<MainHome> with SingleTickerProviderStateMixin{
     )..repeat();
     super.initState();
   }
+  //动画结束清除控制器防止内存溢出
+  @override void dispose(){
+    _controller.dispose();
+    super.dispose();
+  }
 
   
   @override 
@@ -47,17 +52,6 @@ class MainHomeState extends State<MainHome> with SingleTickerProviderStateMixin{
             image: AssetImage(randomBg)
           )
         ),
-        // child: Transform.rotate(
-        //   angle: _controller.value * 2.0,
-        //   child: Container(
-        //     margin: EdgeInsets.fromLTRB(50.0, 50.0, 0, 0),
-        //     decoration: BoxDecoration(
-        //       color: Colors.red
-        //     ),
-        //     width: 50,
-        //     height: 50
-        //   ),
-        // ),
         child: AnimatedBuilder(
           animation: _controller,
           child: Container(

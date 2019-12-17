@@ -12,6 +12,8 @@ import './job/job-detail.dart' as JobDetail;
 import './login.dart' as Login;
 //验证码登录页面
 import './message-code.dart' as MessageCode;
+//测试
+import './test.dart' as Test;
 
 void main(){
   //debugPaintSizeEnabled = true;
@@ -26,7 +28,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => Home.MainHome(),
+        '/': (context) => Test.LogoApp(),
+        // '/': (context) => Home.MainHome(),
         '/jobList': (context) => Jobs.JobListContainer(),
         '/jobDetail': (context) => JobDetail.JobDetail(),
         '/companyProfile': (context) => Companys.CompanyListContainer(),
