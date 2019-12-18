@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => Test.LogoApp(),
-        // '/': (context) => Home.MainHome(),
+        //'/': (context) => Home.MainHome(),
         '/jobList': (context) => Jobs.JobListContainer(),
         '/jobDetail': (context) => JobDetail.JobDetail(),
         '/companyProfile': (context) => Companys.CompanyListContainer(),

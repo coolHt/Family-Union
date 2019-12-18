@@ -31,7 +31,7 @@ class MainHomeState extends State<MainHome> with SingleTickerProviderStateMixin{
     _controller = AnimationController(
       duration: const Duration(seconds: 10),
       vsync: this
-    )..repeat();
+    )..forward();
     super.initState();
   }
   //动画结束清除控制器防止内存溢出
