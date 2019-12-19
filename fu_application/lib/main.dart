@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => Test.LogoApp(),
-        //'/': (context) => Home.MainHome(),
+        //'/': (context) => Test.LogoApp(),
+        '/': (context) => Home.MainHome(),
         '/jobList': (context) => Jobs.JobListContainer(),
         '/jobDetail': (context) => JobDetail.JobDetail(),
         '/companyProfile': (context) => Companys.CompanyListContainer(),
