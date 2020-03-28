@@ -31,6 +31,10 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+    
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
 
     lintOptions {
         disable 'InvalidPackage'

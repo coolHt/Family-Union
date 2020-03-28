@@ -23,7 +23,7 @@ class MainHomeState extends State<MainHome> with SingleTickerProviderStateMixin{
     int randomNum = bgUrls.length - 1;
     //添加动画时长
     _controller = AnimationController(
-      duration: const Duration(seconds: 4),
+      duration: const Duration(seconds: 2),
       vsync: this
     )..addListener((){
       setState((){});
